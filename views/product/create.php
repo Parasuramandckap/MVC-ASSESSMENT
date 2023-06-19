@@ -39,7 +39,7 @@
                                 <option class="disabled"></option>
                                 <option>Apple</option>
                                 <option>Samsung</option>
-                                <option >Remi</option>
+                                <option >Redmi</option>
                             </select>
                         </div>
                         <div>
