@@ -29,6 +29,9 @@
                 <th scope="col" class="px-6 py-3">
                     stock
                 </th>
+                <th scope="col" class="px-6 py-3">
+                    action
+                </th>
             </tr>
             </thead>
             <tbody>
@@ -51,9 +54,19 @@
                 <td class="px-6 py-4">
                     <?php echo $listDatas["SKU"]?>
                 </td>
-                <td class="px-6 py-4" id="stock">
+                <td class="px-6 py-4" id="stock-value">
                     <?php echo $listDatas["stock"];
                     ?>
+                </td>
+                <td class="px-6 py-4" id="stock">
+                    <form action="/edit" method="post">
+                        <input type="hidden" name="edit" value="<?php echo $listDatas["id"]?>">
+                        <button type="submit">edit</button>
+                    </form>
+                    <form action="/delete" method="post">
+                        <input type="hidden" name="delete" value="<?php echo $listDatas["id"]?>">
+                        <button type="submit"  value="delete">delete</button>
+                    </form>
                 </td>
             </tr>
 
@@ -62,18 +75,20 @@
         </table>
     </div>
     <form action="/create" method="post">
-        <button type="submit">back create page</button>
+        <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">back create page</button>
+
     </form>
     </body>
 <script type="text/javascript">
-    let stock =  document.querySelectorAll("#stock")
-    stock.forEach(ele=>{
-       if(Number(ele.innerText)<10){
-           ele.parentElement.style.backgroundColor ="white"
-       }
-       else{
-           ele.parentElement.style.backgroundColor ="yellow"
-       }
+    let stock =  document.querySelectorAll("#stock-value")
+    console.log(stock)
+    stock.forEach((element)=>{
+        if(Number(element.innerText)<10){
+            element.parentElement.style.backgroundColor = "yellow"
+        }
+        else {
+            element.parentElement.style.backgroundColor = "white"
+        }
     })
 </script>
 </html>

@@ -10,9 +10,11 @@ class UserController{
 
     public function create($create) {
         if($create){
+
             $this->userModel->create($create);
         }
         else{
+            session_unset();
             require "views/product/create.php";
         }
     }
@@ -24,6 +26,16 @@ class UserController{
        $listData = $this->userModel->list_data();
         require "views/product/list.php";
     }
-
+    public function edit($editId){
+        $read = $this->userModel->read($editId);
+        require "views/product/edit.php";
+    }
+    public function delete($id){
+       $this->userModel->delete($id);
+       header("location:/list");
+    }
+    public function update($data){
+        $this->userModel->update($data);
+    }
 
 }

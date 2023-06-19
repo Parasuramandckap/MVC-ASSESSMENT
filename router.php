@@ -44,6 +44,16 @@ class Router
 
                     case "list":
                         $this->controller->list_data();
+                        break;
+                    case "edit":
+                        $this->controller->edit($_POST["edit"]);
+                        break;
+                    case "delete":
+                        $this->controller->delete($_POST["delete"]);
+                        break;
+                    case "update":
+                        $this->controller->update($_POST);
+                        break;
                 }
             }
         }

@@ -72,6 +72,28 @@ class UserModel extends Database {
         return $list;
     }
 
+    public function delete($id){
+       $this->db->query("DELETE FROM products WHERE id='$id'");
+    }
+    public function read($id){
+       $read=  $this->db->query("SELECT * FROM products where id='$id'");
+        $read = $read->fetchAll();
+       return $read;
+    }
+    public function update($data){
+        print_r($data);
+        $productsName = $data["pro-name"];
+        $productSKU = $data["pro-sku"];
+        $productsPrice = $data["pro-price"];
+        $productBrand = $data["pro-brand"];
+        $productDate = $data["pro-date"];
+        $productStock = $data["pro-stock"];
+        $productId = $data["pro-id"];
 
+        $this->db->query("UPDATE products
+SET product_name = '$productsName', SKU = '$productSKU',price='$productsPrice',stock='$productStock',brand='$productBrand',manufacture_date='$productDate'
+WHERE id = '$productId'");
+        header("location:/list");
+    }
 }
 
